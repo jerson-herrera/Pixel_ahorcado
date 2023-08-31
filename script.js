@@ -44,6 +44,12 @@ const wrongLetter = () =>{
 const endGame = () => {
     document.removeEventListener('keydown', letterEvent); /*Sacar el eventlistener que le pusimos a las  letras,para que el usuario no pueda seguir ingresando letras*/
     starButton.style.display = 'block'; /*Volvemos a mostrar el start butom para que el usuario pueda volver a empezar la partida*/
+    if (mistakes === bodyParts.length) {
+        const correctWordElement = document.createElement('p');
+        correctWordElement.textContent = `¡Perdiste! La palabra correcta era: ${selectedWord.join('')}`;
+        wordContainer.appendChild(correctWordElement);
+    }
+
 }
 
 const correctLetter = letter => {
